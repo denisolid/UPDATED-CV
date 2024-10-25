@@ -1,0 +1,66 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-gray-900 text-white font-sans;
+  }
+}
+
+.glass-card {
+  @apply bg-white/5 backdrop-blur-lg border border-white/10 hover:border-blue-500/50 transition-all duration-300;
+}
+
+.text-gradient {
+  @apply bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent;
+}
+
+.bg-grid {
+  background-image: linear-gradient(to right, #1f2937 1px, transparent 1px),
+    linear-gradient(to bottom, #1f2937 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-20px); }
+}
+
+.hexagon {
+  clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
+}
+
+.skill-card {
+  @apply relative overflow-hidden rounded-xl glass-card p-6 transform transition-all duration-300;
+}
+
+.skill-card::before {
+  content: '';
+  @apply absolute inset-0 bg-gradient-to-r from-blue-500/10 via-purple-500/10 to-pink-500/10 opacity-0 transition-opacity duration-300;
+}
+
+.skill-card:hover::before {
+  @apply opacity-100;
+}
+
+.project-card {
+  @apply relative overflow-hidden rounded-xl glass-card;
+}
+
+.project-card::after {
+  content: '';
+  @apply absolute inset-0 bg-gradient-to-t from-gray-900 via-gray-900/80 to-transparent opacity-0 transition-opacity duration-300;
+}
+
+.project-card:hover::after {
+  @apply opacity-100;
+}
